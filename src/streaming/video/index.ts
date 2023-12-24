@@ -1,9 +1,10 @@
-import {Express, Request, Response} from "express";
+import {Express, Response} from "express";
+import { AuthenticatedRequest } from "index";
 import fs from "fs";
 import { Logger } from "winston";
 
 export const streamingVideo = (app: Express, db: any, logger: Logger) => {
-    app.get('/video', (req: Request, res: Response) => {
+    app.get('/video', (req: AuthenticatedRequest, res: Response) => {
         const range = req.headers.range;
         if (!range) {
             res.status(400).send("Requires Range header");

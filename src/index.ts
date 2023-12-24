@@ -1,9 +1,10 @@
-import cors from "cors";
 import * as dotenv from "dotenv";
-import express, { Express, NextFunction, Request, Response } from "express";
 import path from "path";
 import { logger } from "./logging/logger";
 import { routes } from "./routes";
+import { Express, NextFunction, Request, Response } from "express";
+const cors = require("cors");
+const express = require("express");
 require("express-async-errors");
 
 dotenv.config();
@@ -34,7 +35,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   next(err);
 });
 
-app.use("*", (req, res) => {
+app.use("*", (req: Request, res: Response) => {
   res.status(404).json({
     success: "false",
     message: "Page not found",

@@ -1,4 +1,4 @@
-import {Express, Request, Response} from "express";
+import {Express, Response} from "express";
 import { Logger } from "winston";
 import { verifyToken } from "../middleware/auth";
 import { AuthenticatedRequest } from "index";
